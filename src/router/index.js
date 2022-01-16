@@ -6,7 +6,7 @@ const routes = [
     path: "/",
     name: "Home",
     component: Main,
-  }
+  },
 ];
 
 const router = createRouter({
