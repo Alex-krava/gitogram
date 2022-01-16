@@ -7,6 +7,13 @@
   &__container {
     display: flex;
     min-width: 128px;
+    cursor: pointer;
+
+    &:hover {
+      .stats__icon {
+        color: $primary;
+      }
+    }
   }
 
   &__label {
@@ -23,6 +30,7 @@
     width: 16px;
     height: 16px;
     color: #586069;
+    transition: 0.25s color;
   }
 
   &__text,
