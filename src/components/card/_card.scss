@@ -1,0 +1,34 @@
+.card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 173px;
+  padding: 24px 20px;
+  background: $white;
+  border: 1px solid $border;
+  box-shadow: 0 4px 40px rgba(0, 0, 0, 0.07);
+  border-radius: 10px;
+  box-sizing: border-box;
+
+  &__title,
+  &__description {
+    margin-bottom: 15px;
+  }
+
+  &__title {
+    font-weight: bold;
+    font-size: 26px;
+    line-height: 28px;
+    color: $text-2;
+  }
+
+  &__description {
+    font-size: 14px;
+    line-height: 22px;
+    color: $text-3;
+  }
+
+  &__bold {
+    font-weight: bold;
+  }
+}

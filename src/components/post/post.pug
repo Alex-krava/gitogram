@@ -1,0 +1,14 @@
+.post
+    .post__user
+        user(:src="post.avatar" :name="post.username")
+    .post__card
+        slot
+    .post__issues
+        .post__toggler
+            toggler(@onChange="handlingChangeToggler")
+        ul.post__list(v-if="visibleIssues")
+            li.post__item(v-for="(issue, index) in post.issues" :key="`${index}${issue.username}`")
+                span.post__username {{issue.username}}
+                span.post__issue {{issue.issue}}
+
+    .post__data {{post.date}}

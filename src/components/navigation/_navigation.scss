@@ -1,0 +1,26 @@
+.navigation {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+
+  &__item {
+    &:first-child {
+      padding-right: 4px;
+    }
+  }
+
+  &__link {
+    display: block;
+    width: 32px;
+    height: 32px;
+    color: $text;
+    transition: 0.25s all;
+
+    &:hover {
+      opacity: 0.8;
+    }
+    &:active {
+      opacity: 0.5;
+    }
+  }
+}

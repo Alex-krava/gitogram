@@ -1,0 +1,49 @@
+.stats {
+  display: inline-flex;
+  border: 1px solid rgba(27, 31, 35, 0.15);
+  border-radius: 6px;
+  overflow: hidden;
+
+  &__container {
+    display: flex;
+    min-width: 128px;
+  }
+
+  &__label {
+    display: flex;
+    align-items: center;
+    min-width: 73px;
+    padding: 5px 13px;
+    gap: 4px;
+    background: #FAFBFC;
+    box-sizing: border-box;
+  }
+
+  &__icon {
+    width: 16px;
+    height: 16px;
+    color: #586069;
+  }
+
+  &__text,
+  &__value {
+    font-size: 14px;
+    line-height: 18px;
+    color: #24292E;
+  }
+
+  &__value {
+    flex: 1;
+    padding: 5px 13px;
+    box-sizing: border-box;
+    text-align: center;
+  }
+
+  &__r-border {
+    border-right: 1px solid rgba(27, 31, 35, 0.15);
+  }
+
+  &__l-border {
+    border-left: 1px solid rgba(27, 31, 35, 0.15);
+  }
+}

@@ -1,30 +1,23 @@
-<template>
-  <div id="nav">
-    <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link>
-  </div>
-  <router-view />
+<template lang="pug">
+main-page
+  template(#header)
+    x-header
+  template(#avatars)
+    avatars-list
 </template>
 
-<style lang="scss">
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
+<script>
+import MainPage from "@/pages/main/main.vue";
+import XHeader from "@/components/header/header.vue";
+import AvatarsList from "@/components/avatars-list/avatars-list.vue";
 
-#nav {
-  padding: 30px;
+export default {
+  components: {
+    MainPage,
+    XHeader,
+    AvatarsList,
+  },
+};
+</script>
 
-  a {
-    font-weight: bold;
-    color: #2c3e50;
-
-    &.router-link-exact-active {
-      color: #42b983;
-    }
-  }
-}
-</style>
+<style lang="scss" src="@/assets/scss/global.scss"></style>

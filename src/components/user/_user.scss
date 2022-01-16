@@ -1,0 +1,13 @@
+.user {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+
+  &__name {
+    font-size: 18px;
+    line-height: 18px;
+    font-weight: bold;
+    letter-spacing: -0.1px;
+    color: $text;
+  }
+}

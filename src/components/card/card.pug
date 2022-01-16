@@ -1,0 +1,9 @@
+.card
+    .card__content
+        h2.card__title {{post.title}}
+        .card__description
+            span.card__bold {{post.descriptionType}}
+            |  {{post.description}}
+
+    .card__stats
+        stats(:star="post.star" :fork="post.fork")
