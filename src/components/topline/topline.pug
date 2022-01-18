@@ -1,0 +1,6 @@
+.topline
+    .g-container
+        template(v-if="$slots.header")
+            slot(name="header")
+        template(v-if="$slots.avatars")
+            slot(name="avatars")
