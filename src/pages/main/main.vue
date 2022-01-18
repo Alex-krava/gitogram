@@ -3,12 +3,14 @@
 <script>
 import Post from "@/components/post/post";
 import Card from "@/components/card/card";
+import Topline from "@/components/topline/topline";
 
 export default {
   name: "Home",
   components: {
     Post,
     Card,
+    Topline,
   },
   data() {
     return {
