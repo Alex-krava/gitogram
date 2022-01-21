@@ -6,7 +6,7 @@ html {
   background-color: $white;
 }
 
-#app {
+body, #app {
   font-family: $font;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
