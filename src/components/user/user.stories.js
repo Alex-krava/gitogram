@@ -13,7 +13,7 @@ export const defaultView = (args) => ({
       ...args,
     };
   },
-  template: `<user :src="src" :name="name" />`,
+  template: `<user :src="src" :name="name" :img-size="imgSize" />`,
 });
 
 defaultView.story = {
@@ -21,5 +21,6 @@ defaultView.story = {
   args: {
     name: "Iloveanime",
     src: "https://picsum.photos/300/300",
+    imgSize: 44,
   },
 };

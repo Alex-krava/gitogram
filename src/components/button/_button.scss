@@ -1,0 +1,35 @@
+.button {
+  display: block;
+  padding: 11px;
+  background: $primary;
+  border: none;
+  border-radius: 5px;
+  font-weight: bold;
+  font-size: 16px;
+  line-height: 19px;
+  letter-spacing: -0.15px;
+  color: $white;
+
+  &__hover-text {
+    position: absolute;
+    left: -9999px;
+    top: -9999px;
+    opacity: 0;
+  }
+
+  &:hover {
+    background: $gray;
+
+    .button__text.button__text_hover {
+      position: absolute;
+      left: -9999px;
+      top: -9999px;
+      opacity: 0;
+    }
+
+    .button__hover-text {
+      position: static;
+      opacity: 1;
+    }
+  }
+}

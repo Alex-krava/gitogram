@@ -1,0 +1,25 @@
+.progress {
+  height: 2px;
+  position: relative;
+  overflow: hidden;
+  background: rgba(49, 174, 84, 0.3);
+  border-radius: 1px;
+
+  &.progress_active {
+    .progress__line {
+      width: 100%;
+    }
+  }
+
+  &__line {
+    width: 0;
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background: $primary;
+    border-radius: 1px;
+    transition: 10s;
+  }
+}

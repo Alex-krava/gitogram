@@ -16,6 +16,10 @@ export default {
       type: String,
       required: true,
     },
+    imgSize: {
+      type: Number,
+      default: 44,
+    },
   },
 };
 </script>
