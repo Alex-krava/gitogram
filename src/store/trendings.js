@@ -1,4 +1,5 @@
 import { getTrendings } from "../api/rest/trendings";
+import { getReadme } from "../api/rest/readme";
 
 export const trendings = {
   namespaced: true,
@@ -20,10 +21,10 @@ export const trendings = {
           description: post.description,
           star: post.stargazers_count,
           fork: post.forks,
+          content: post.content,
         };
       });
     },
-    dataForCard() {},
   },
   mutations: {
     setTrendings(state, data) {
@@ -34,6 +35,23 @@ export const trendings = {
     },
     updateError(state, value) {
       state.error = value;
+    },
+    updateContent(state, content) {
+      const items = state.data.items.map((item) => {
+        if (item.id === content.id) {
+          return {
+            ...item,
+            content: content.data,
+          };
+        }
+
+        return item;
+      });
+
+      state.data = {
+        ...state.data,
+        items,
+      };
     },
   },
   actions: {
@@ -46,6 +64,17 @@ export const trendings = {
         commit("updateError", new Error(error).message);
       } finally {
         commit("updateIsLoading", false);
+      }
+    },
+    async fetchReadme({ commit }, { id, owner, repo }) {
+      try {
+        const { data } = await getReadme({ owner, repo });
+        commit("updateContent", {
+          id,
+          data,
+        });
+      } catch (error) {
+        console.log(new Error(error).message);
       }
     },
   },

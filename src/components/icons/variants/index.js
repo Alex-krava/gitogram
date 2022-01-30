@@ -3,3 +3,5 @@ export { default as signOut } from "./sign-out.vue";
 export { default as arrow } from "./arrow.vue";
 export { default as fork } from "./fork.vue";
 export { default as star } from "./star.vue";
+export { default as close } from "./close.vue";
+export { default as arrowLeft } from "./arrow-left.vue";

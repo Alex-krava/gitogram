@@ -3,10 +3,12 @@
 
 html {
   min-width: 1240px;
+  height: 100%;
   background-color: $white;
 }
 
 body, #app {
+  height: 100%;
   font-family: $font;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;

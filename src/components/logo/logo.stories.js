@@ -5,8 +5,18 @@ export default {
   component: { Logo },
 };
 
-export const defaultView = () => ({
+export const defaultView = (args) => ({
   title: "Logo",
   components: { Logo },
-  template: `<logo />`,
+  setup() {
+    return { ...args }
+  },
+  template: `<logo :white="white" />`,
 });
+
+
+defaultView.story = {
+  args: {
+    white: false
+  }
+}

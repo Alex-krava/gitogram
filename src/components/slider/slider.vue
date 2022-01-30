@@ -1,42 +1,81 @@
 <template lang="pug">
 .slider
-  .slider__header
-    .slider__progress
-      c-progress(@onFinish="handlingFinishProgress")
-    .slider__user
-      user(:src="userAvatar" :name="repoName" :size="32")
-  .slider__content
-    slot
-  .slider__footer
-    c-button.slider__button Follow
+  .slider__container(:style="styleContainer")
+    ul.slider__list
+      li.slider__item(v-for="(post, index) in posts" :key="post.id" :class="{'slider__item_active': index === activeIndex}")
+        card(:userAvatar="post.avatar"
+          :repoName="post.title"
+          :active="index === activeIndex"
+          @nextClick="handlingNextClick"
+          @previousClick="handlingPreviousClick"
+          @finishProgress="handlingNextClick"
+          :firstCard="index === 0"
+          :lastCard="index === posts.length - 1"
+          :content="!!post.content"
+          )
+          div(v-html="post.content")
 </template>
 
 <script>
-import User from "@/components/user/user";
-import CProgress from "@/components/progress/progress";
-import CButton from "@/components/button/button";
+import { mapActions, mapGetters } from "vuex";
+import Card from "@/components/slider-card/slider-card.vue";
+
 export default {
   name: "Slider",
-
   components: {
-    User,
-    CProgress,
-    CButton,
+    Card,
   },
 
-  props: {
-    userAvatar: {
-      type: String,
-      required: true,
+  data() {
+    return {
+      activeIndex: Number.parseInt(this.$route?.query?.active) || 0,
+    };
+  },
+
+  computed: {
+    ...mapGetters({
+      posts: "trendings/posts",
+    }),
+    styleContainer() {
+      return {
+        transform: `translateX(-${this.activeIndex * 375}px)`,
+      };
     },
-    repoName: {
-      type: String,
-      required: true,
-    },
+  },
+
+  async created() {
+    await this.fetchTrendings();
+    this.fetchReadme();
+
+    if (this.$route.query.active) {
+      this.activeIndex = Number.parseInt(this.$route.query.active);
+    }
   },
 
   methods: {
-    handlingFinishProgress() {},
+    ...mapActions({
+      fetchTrendings: "trendings/fetchTrendings",
+      fetchReadmeAction: "trendings/fetchReadme",
+    }),
+
+    async fetchReadme() {
+      const {id, username, title} = this.posts[this.activeIndex];
+      this.fetchReadmeAction({id, owner: username, repo: title});
+    },
+
+    handlingNextClick() {
+      if (this.activeIndex < this.posts.length - 1) {
+        this.activeIndex += 1;
+        this.fetchReadme();
+      }
+    },
+
+    handlingPreviousClick() {
+      if (this.activeIndex !== 0) {
+        this.activeIndex -= 1;
+        this.fetchReadme();
+      }
+    },
   },
 };
 </script>

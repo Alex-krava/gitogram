@@ -7,21 +7,16 @@
 export default {
   name: "c-progress",
 
-  data() {
-    return {
-      active: false,
-    };
+  props: {
+    active: {
+      type: Boolean,
+      default: false,
+    },
   },
 
   emits: ["onFinish"],
 
   mounted() {
-    this.$nextTick(() => {
-      setTimeout(() => {
-        this.active = true;
-      });
-    });
-
     this.$refs.indicator.addEventListener("transitionend", this.handlingFinish);
   },
 

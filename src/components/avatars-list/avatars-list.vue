@@ -16,6 +16,17 @@ export default {
       posts: "trendings/posts",
     }),
   },
+
+  methods: {
+    goToStories(index) {
+      this.$router.push({
+        path: "/stories",
+        query: {
+          active: index,
+        },
+      });
+    },
+  },
 };
 </script>
 

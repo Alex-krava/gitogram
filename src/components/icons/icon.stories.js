@@ -5,13 +5,13 @@ export default {
   component: { Icon },
 };
 
-export const defaultView = ({name}) => ({
+export const defaultView = ({ name }) => ({
   title: "Icon",
   components: { Icon },
   setup() {
     return {
-      name
-    }
+      name,
+    };
   },
   template: `<icon width="30" :name="name" />`,
 });
@@ -23,7 +23,7 @@ defaultView.story = {
   },
   argTypes: {
     name: {
-      options: ["arrow", "fork", "home", "sign-out", "star"],
+      options: ["arrow", "fork", "home", "sign-out", "star", "close", "arrow-left"],
       control: { type: "select" },
     },
   },
