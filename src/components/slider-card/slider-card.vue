@@ -68,7 +68,7 @@ export default {
 
   methods: {
     handlingFinishProgress() {
-      if(this.active) {
+      if (this.active) {
         this.$emit("finishProgress");
       }
     },

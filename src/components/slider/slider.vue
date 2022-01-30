@@ -59,8 +59,8 @@ export default {
     }),
 
     async fetchReadme() {
-      const {id, username, title} = this.posts[this.activeIndex];
-      this.fetchReadmeAction({id, owner: username, repo: title});
+      const { id, username, title } = this.posts[this.activeIndex];
+      this.fetchReadmeAction({ id, owner: username, repo: title });
     },
 
     handlingNextClick() {
