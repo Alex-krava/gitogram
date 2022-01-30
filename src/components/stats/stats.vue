@@ -12,11 +12,11 @@ export default {
 
   props: {
     star: {
-      type: String,
+      type: Number,
       required: true,
     },
     fork: {
-      type: String,
+      type: Number,
       required: true,
     },
   },

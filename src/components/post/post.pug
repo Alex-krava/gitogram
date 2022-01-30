@@ -3,7 +3,7 @@
         user(:src="post.avatar" :name="post.username")
     .post__card
         slot
-    .post__issues(v-if="post?.issues?.length")
+    .post__issues(v-if="post.issues.length")
         .post__toggler
             toggler(@onChange="handlingChangeToggler")
         ul.post__list(v-if="visibleIssues")

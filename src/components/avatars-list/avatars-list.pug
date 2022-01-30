@@ -1,4 +1,4 @@
 ul.avatars-list
-    li.avatars-list__item(v-for="(avatar, index) in avatars" :key="`${index}${avatar.name}`")
-        avatar(:src="avatar.src" :size="92" withBorder)
-        .avatars-list__name {{avatar.name}}
+    li.avatars-list__item(v-for="(avatar, index) in posts" :key="`${index}${avatar.username}`")
+        avatar(:src="avatar.avatar" :size="92" withBorder)
+        .avatars-list__name {{avatar.username}}

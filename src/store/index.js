@@ -1,8 +1,8 @@
 import { createStore } from "vuex";
+import { trendings } from "./trendings";
 
 export default createStore({
-  state: {},
-  mutations: {},
-  actions: {},
-  modules: {},
+  modules: {
+    trendings: trendings,
+  },
 });
