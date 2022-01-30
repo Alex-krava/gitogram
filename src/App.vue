@@ -1,23 +1,9 @@
 <template lang="pug">
-main-page
-  template(#header)
-    x-header
-  template(#avatars)
-    avatars-list
+router-view
 </template>
 
 <script>
-import MainPage from "@/pages/main/main.vue";
-import XHeader from "@/components/header/header.vue";
-import AvatarsList from "@/components/avatars-list/avatars-list.vue";
-
-export default {
-  components: {
-    MainPage,
-    XHeader,
-    AvatarsList,
-  },
-};
+export default {};
 </script>
 
 <style lang="scss" src="@/assets/scss/global.scss"></style>

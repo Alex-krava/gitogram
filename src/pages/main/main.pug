@@ -1,9 +1,9 @@
 .main-page
     topline
         template(#header)
-            slot(name="header")
+            x-header
         template(#avatars)
-            slot(name="avatars")
+            avatars-list
 
     section.main-page__section
         .g-container.g-container_small

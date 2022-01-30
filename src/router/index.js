@@ -7,6 +7,11 @@ const routes = [
     name: "Home",
     component: Main,
   },
+  {
+    path: "/stories",
+    name: "Stories",
+    component: () => import("../pages/stories/stories.vue"),
+  },
 ];
 
 const router = createRouter({
