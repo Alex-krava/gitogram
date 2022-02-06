@@ -1,4 +1,4 @@
-import { getTrendings } from "../api/rest/trendings";
+import { getTrendings, onDeleteFollow, onFollow } from "../api/rest/trendings";
 import { getReadme } from "../api/rest/readme";
 
 export const trendings = {
@@ -22,13 +22,26 @@ export const trendings = {
           star: post.stargazers_count,
           fork: post.forks,
           content: post.content,
+          following: post.following,
         };
       });
     },
   },
   mutations: {
     setTrendings(state, data) {
-      state.data = data;
+      state.data = {
+        ...data,
+        items: data.items.map((item) => {
+          return {
+            ...item,
+            following: {
+              status: false,
+              loading: false,
+              error: "",
+            },
+          };
+        }),
+      };
     },
     updateIsLoading(state, value) {
       state.isLoading = value;
@@ -53,6 +66,24 @@ export const trendings = {
         items,
       };
     },
+    setFollowing(state, data) {
+      state.data = {
+        ...state.data,
+        items: state.data.items.map((item) => {
+          if (data.id === item.id) {
+            return {
+              ...item,
+              following: {
+                ...item.following,
+                ...data,
+              },
+            };
+          } else {
+            return item;
+          }
+        }),
+      };
+    },
   },
   actions: {
     async fetchTrendings({ commit }) {
@@ -75,6 +106,30 @@ export const trendings = {
         });
       } catch (error) {
         console.log(new Error(error).message);
+      }
+    },
+    async followRepo({ commit, state }, id) {
+      try {
+        commit("setFollowing", { id: id, loading: true });
+        const post = state.data.items.find((post) => post.id === id);
+        await onFollow({ owner: post.owner.login, repo: post.name });
+        commit("setFollowing", { id: id, status: true });
+      } catch (error) {
+        commit("setFollowing", { id: id, error: new Error(error).message });
+      } finally {
+        commit("setFollowing", { id: id, loading: false });
+      }
+    },
+    async unfollowRepo({ commit, state }, id) {
+      try {
+        commit("setFollowing", { id: id, loading: true });
+        const post = state.data.items.find((post) => post.id === id);
+        await onDeleteFollow({ owner: post.owner.login, repo: post.name });
+        commit("setFollowing", { id: id, status: false });
+      } catch (error) {
+        commit("setFollowing", { id: id, error: new Error(error).message });
+      } finally {
+        commit("setFollowing", { id: id, loading: false });
       }
     },
   },

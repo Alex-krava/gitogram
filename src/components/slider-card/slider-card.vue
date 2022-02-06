@@ -11,7 +11,7 @@
     template(v-else)
       placeholder(:paragraphs="2")
   .slider-card__footer
-    c-button.slider-card__button Follow
+    c-button.slider-card__button(@click="handlingClickFollow" hoverText="Unfollow" :pressed="buttonStatus.status" :loading="buttonStatus.loading") Follow
 
   template(v-if="active")
     button.slider-card__nav-button(v-if="!firstCard" @click="previousClick")
@@ -37,9 +37,13 @@ export default {
     CProgress,
     CButton,
   },
-  emits: ["nextClick", "previousClick", "finishProgress"],
+  emits: ["nextClick", "previousClick", "finishProgress", "onClick"],
 
   props: {
+    id: {
+      type: Number,
+      required: true,
+    },
     userAvatar: {
       type: String,
       required: true,
@@ -64,6 +68,16 @@ export default {
       type: Boolean,
       default: false,
     },
+    buttonStatus: {
+      type: Object,
+      default: () => {
+        return {
+          status: false,
+          loading: false,
+          error: "",
+        };
+      },
+    },
   },
 
   methods: {
@@ -77,6 +91,9 @@ export default {
     },
     previousClick() {
       this.$emit("previousClick");
+    },
+    handlingClickFollow() {
+      this.$emit("onClick", this.id);
     },
   },
 };

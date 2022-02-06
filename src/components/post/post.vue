@@ -3,6 +3,7 @@
 <script>
 import User from "@/components/user/user";
 import Toggler from "@/components/toggler/toggler";
+import { mapActions } from "vuex";
 
 export default {
   name: "Post",
@@ -26,8 +27,19 @@ export default {
   },
 
   methods: {
-    handlingChangeToggler(value) {
+    ...mapActions({
+      fetchIssues: "user/fetchIssues",
+    }),
+    async handlingChangeToggler(value) {
       this.visibleIssues = value;
+
+      if (value && !this.post.issues.length) {
+        await this.fetchIssues({
+          owner: this.post.username,
+          repo: this.post.title,
+          id: this.post.id,
+        });
+      }
     },
   },
 };

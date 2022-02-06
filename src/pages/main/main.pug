@@ -7,6 +7,6 @@
 
     section.main-page__section
         .g-container.g-container_small
-            .main-page__repository(v-for="post in posts" :key="post.id" )
+            .main-page__repository(v-for="post in likes" :key="post.id" )
                 post(:post="post")
                     card(:post="post")

@@ -3,12 +3,29 @@
 <script>
 import Icon from "@/components/icons/icon.vue";
 import Avatar from "@/components/avatar/avatar.vue";
+import { mapActions, mapGetters } from "vuex";
 export default {
   name: "Navigation",
 
   components: {
     Icon,
     Avatar,
+  },
+
+  computed: {
+    ...mapGetters({
+      avatarSrc: "user/avatarSrc",
+    }),
+  },
+
+  methods: {
+    ...mapActions({
+      logout: "user/logout",
+    }),
+    handlingClickLogout() {
+      this.logout();
+      this.$router.replace({ name: "Auth" });
+    },
   },
 };
 </script>

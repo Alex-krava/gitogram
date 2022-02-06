@@ -4,14 +4,17 @@
     ul.slider__list
       li.slider__item(v-for="(post, index) in posts" :key="post.id" :class="{'slider__item_active': index === activeIndex}")
         card(:userAvatar="post.avatar"
+          :id="post.id"
           :repoName="post.title"
           :active="index === activeIndex"
           @nextClick="handlingNextClick"
           @previousClick="handlingPreviousClick"
           @finishProgress="handlingNextClick"
+          @onClick="handlingClickInCard"
           :firstCard="index === 0"
           :lastCard="index === posts.length - 1"
           :content="!!post.content"
+          :buttonStatus="post.following"
           )
           div(v-html="post.content")
 </template>
@@ -56,6 +59,7 @@ export default {
     ...mapActions({
       fetchTrendings: "trendings/fetchTrendings",
       fetchReadmeAction: "trendings/fetchReadme",
+      followRepo: "trendings/followRepo",
     }),
 
     async fetchReadme() {
@@ -75,6 +79,10 @@ export default {
         this.activeIndex -= 1;
         this.fetchReadme();
       }
+    },
+
+    async handlingClickInCard(id) {
+      await this.followRepo(id);
     },
   },
 };

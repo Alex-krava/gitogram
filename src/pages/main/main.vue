@@ -20,13 +20,18 @@ export default {
   computed: {
     ...mapGetters({
       posts: "trendings/posts",
+      likes: "user/likes",
     }),
   },
   async created() {
     await this.fetchTrendings();
+    await this.fetchUserLikes();
   },
   methods: {
-    ...mapActions({ fetchTrendings: "trendings/fetchTrendings" }),
+    ...mapActions({
+      fetchTrendings: "trendings/fetchTrendings",
+      fetchUserLikes: "user/fetchUserLikes",
+    }),
   },
 };
 </script>

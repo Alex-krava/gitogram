@@ -1,4 +1,4 @@
-button.toggler(@click="handlingClick" :class="{'toggler_open': open}" )
+button.toggler(@click="handlingClick" :class="{'toggler_open': !open}" )
     span.toggler__label {{`${statusText} issues`}}
     span.toggler__icon
         icon(name="arrow")
