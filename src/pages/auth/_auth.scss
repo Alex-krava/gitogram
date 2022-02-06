@@ -1,0 +1,42 @@
+.auth {
+  height: 100%;
+
+  &__container {
+    display: flex;
+    flex-direction: column;
+    min-height: 100%;
+  }
+  &__content {
+    flex: 1;
+    padding-top: 206px;
+    text-align: center;
+  }
+
+  &__text {
+    display: block;
+    max-width: 256px;
+    margin: 0 auto;
+    padding: 12px 0 38px 0;
+    font-size: 18px;
+    line-height: 28px;
+    text-align: center;
+    color: #6F6F6F;
+  }
+
+  &__button {
+    width: 100%;
+    max-width: 252px;
+    margin: 0 auto;
+  }
+
+  &__icon {
+    width: 24px;
+    height: 24px;
+    margin-left: 12px;
+  }
+
+  &__img-container {
+    padding-top: 86px;
+    margin-bottom: -56px;
+  }
+}

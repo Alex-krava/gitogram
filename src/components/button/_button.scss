@@ -10,6 +10,12 @@
   letter-spacing: -0.15px;
   color: $white;
 
+  &__text {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
   &__hover-text {
     position: absolute;
     left: -9999px;

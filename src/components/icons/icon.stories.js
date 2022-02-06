@@ -23,7 +23,16 @@ defaultView.story = {
   },
   argTypes: {
     name: {
-      options: ["arrow", "fork", "home", "sign-out", "star", "close", "arrow-left"],
+      options: [
+        "arrow",
+        "fork",
+        "home",
+        "sign-out",
+        "star",
+        "close",
+        "arrow-left",
+        "github",
+      ],
       control: { type: "select" },
     },
   },
