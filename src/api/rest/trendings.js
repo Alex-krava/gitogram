@@ -9,7 +9,11 @@ export const getTrendings = () => {
     createdDate.getMonth() > 10
       ? createdDate.getMonth() + 1
       : `0${createdDate.getMonth() + 1}`;
-  const queryDate = `${createdDate.getFullYear()}-${month}-${createdDate.getDate()}`;
+  const date =
+    createdDate.getDate() > 10
+      ? createdDate.getDate()
+      : `0${createdDate.getDate()}`;
+  const queryDate = `${createdDate.getFullYear()}-${month}-${date}`;
 
   const params = new URLSearchParams();
   params.append("order", "desc");
