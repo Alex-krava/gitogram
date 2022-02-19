@@ -1,0 +1,29 @@
+.issues {
+  &__toggler {
+    padding-bottom: 10px;
+  }
+
+  &__list {
+    padding-bottom: 10px;
+  }
+
+  &__item {
+    margin-bottom: 6px;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  &__username,
+  &__issue {
+    font-size: 14px;
+    line-height: 22px;
+    color: $text;
+  }
+
+  &__username {
+    font-weight: bold;
+    margin-right: 8px;
+  }
+}

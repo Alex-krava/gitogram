@@ -2,7 +2,7 @@
 
 <script>
 import User from "@/components/user/user";
-import Toggler from "@/components/toggler/toggler";
+import Issues from "@/components/issues/issues";
 import { mapActions } from "vuex";
 
 export default {
@@ -10,7 +10,7 @@ export default {
 
   components: {
     User,
-    Toggler,
+    Issues,
   },
 
   props: {
@@ -30,16 +30,12 @@ export default {
     ...mapActions({
       fetchIssues: "user/fetchIssues",
     }),
-    async handlingChangeToggler(value) {
-      this.visibleIssues = value;
-
-      if (value && !this.post.issues.length) {
-        await this.fetchIssues({
-          owner: this.post.username,
-          repo: this.post.title,
-          id: this.post.id,
-        });
-      }
+    async handlingChangeToggler() {
+      await this.fetchIssues({
+        owner: this.post.username,
+        repo: this.post.title,
+        id: this.post.id,
+      });
     },
   },
 };

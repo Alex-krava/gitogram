@@ -1,12 +1,12 @@
-import Slider from './slider.vue';
+import Slider from "./slider.vue";
 
 export default {
-    title: 'Slider',
-    component: Slider,
+  title: "Slider",
+  component: Slider,
 };
 
-export const Default = (args, {argTypes}) => ({
-    props: Object.keys(argTypes),
-    components: { Slider },
-    template: `<slider v-bind="$props" />`,
+export const Default = (args, { argTypes }) => ({
+  props: Object.keys(argTypes),
+  components: { Slider },
+  template: `<slider v-bind="$props" />`,
 });

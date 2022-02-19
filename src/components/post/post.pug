@@ -4,11 +4,6 @@
     .post__card
         slot
     .post__issues
-        .post__toggler
-            toggler(@onChange="handlingChangeToggler")
-        ul.post__list(v-if="visibleIssues")
-            li.post__item(v-for="(issue, index) in post.issues" :key="`${index}${issue.username}`")
-                span.post__username {{issue.user.login}}
-                span.post__issue {{issue.title}}
+        issues(:post="post" @onChange="handlingChangeToggler")
 
     .post__data {{post.date}}

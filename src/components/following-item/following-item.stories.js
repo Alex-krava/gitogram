@@ -1,12 +1,12 @@
-import FollowingItem from './following-item.vue';
+import FollowingItem from "./following-item.vue";
 
 export default {
-    title: 'FollowingItem',
-    component: FollowingItem,
+  title: "FollowingItem",
+  component: FollowingItem,
 };
 
-export const Default = (args, {argTypes}) => ({
-    props: Object.keys(argTypes),
-    components: { FollowingItem },
-    template: `<following-item v-bind="$props" />`,
+export const Default = (args, { argTypes }) => ({
+  props: Object.keys(argTypes),
+  components: { FollowingItem },
+  template: `<following-item v-bind="$props" />`,
 });
