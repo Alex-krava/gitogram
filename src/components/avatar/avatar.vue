@@ -17,6 +17,10 @@ export default {
       type: Boolean,
       default: false,
     },
+    withSmallBorder: {
+      type: Boolean,
+      default: false,
+    },
   },
 };
 </script>

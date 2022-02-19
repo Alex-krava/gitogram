@@ -18,6 +18,24 @@ const routes = [
     name: "Stories",
     component: () => import("../pages/stories/stories.vue"),
   },
+  {
+    path: "/profile",
+    name: "Profile",
+    component: () => import("../pages/profile/profile.vue"),
+    children: [
+      {
+        path: "",
+        name: "Repositories",
+        component: () =>
+          import("../pages/profile/repositories/repositories.vue"),
+      },
+      {
+        path: "following",
+        name: "Following",
+        component: () => import("../pages/profile/following/following.vue"),
+      },
+    ],
+  },
 ];
 
 const router = createRouter({

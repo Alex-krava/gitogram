@@ -3,7 +3,8 @@ ul.navigation
         router-link.navigation__link(to="/")
             icon(name="home")
     li.navigation__item
-        avatar(:src="avatarSrc" :size="37")
+        router-link(to="/profile")
+            avatar(:src="avatarSrc" :size="37")
     li.navigation__item
         a.navigation__link(@click="handlingClickLogout")
             icon(name="signOut")

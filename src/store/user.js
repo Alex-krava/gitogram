@@ -1,4 +1,10 @@
-import { getIssues, getUser, getUserLikes } from "../api/rest/user";
+import {
+  getIssues,
+  getUser,
+  getUserFollowers,
+  getUserLikes,
+  getUserRepos,
+} from "../api/rest/user";
 
 export const user = {
   namespaced: true,
@@ -9,6 +15,16 @@ export const user = {
       error: "",
     },
     likes: {
+      data: [],
+      isLoading: false,
+      error: "",
+    },
+    userRepos: {
+      data: [],
+      isLoading: false,
+      error: "",
+    },
+    userFollowers: {
       data: [],
       isLoading: false,
       error: "",
@@ -64,6 +80,21 @@ export const user = {
 
       state.likes.data = likes;
     },
+    setRepos(state, data) {
+      state.userRepos.data = data;
+    },
+
+    setReposLoading(state, data) {
+      state.userRepos.isLoading = data;
+    },
+
+    setFollowers(state, data) {
+      state.userFollowers.data = data;
+    },
+
+    setFollowersLoading(state, data) {
+      state.userFollowers.isLoading = data;
+    },
   },
   actions: {
     async fetchUser({ commit }) {
@@ -99,6 +130,28 @@ export const user = {
 
     logout() {
       localStorage.removeItem("token");
+    },
+
+    async fetchUserRepos({ commit }, { ownerLogin }) {
+      try {
+        commit("setReposLoading", true);
+        const { data } = await getUserRepos({ ownerLogin });
+        commit("setRepos", data);
+        commit("setReposLoading", false);
+      } catch (error) {
+        throw new Error(error);
+      }
+    },
+
+    async fetchUserFollowers({ commit }, { ownerLogin }) {
+      try {
+        commit("setFollowersLoading", true);
+        const { data } = await getUserFollowers({ ownerLogin });
+        commit("setFollowers", data);
+        commit("setFollowersLoading", false);
+      } catch (error) {
+        throw new Error(error);
+      }
     },
   },
 };

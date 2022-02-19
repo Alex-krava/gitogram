@@ -25,3 +25,19 @@ export const getIssues = async ({ owner, repo }) => {
 
   return makeRequest(requestConfig);
 };
+
+export const getUserRepos = async ({ ownerLogin }) => {
+  const requestConfig = {
+    url: `https://api.github.com/users/${ownerLogin}/repos`,
+  };
+
+  return makeRequest(requestConfig);
+};
+
+export const getUserFollowers = async ({ ownerLogin }) => {
+  const requestConfig = {
+    url: `https://api.github.com/users/${ownerLogin}/followers`,
+  };
+
+  return makeRequest(requestConfig);
+};

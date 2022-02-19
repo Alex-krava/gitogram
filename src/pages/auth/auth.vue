@@ -53,7 +53,7 @@ export default {
       const gitHubAuthLink = "https://github.com/login/oauth/authorize";
       const params = new URLSearchParams();
       params.append("client_id", env.clientId);
-      params.append("scope", "repo:status read:user");
+      params.append("scope", "repo:status public_repo user:follow");
 
       window.location.href = `${gitHubAuthLink}?${params}`;
     },

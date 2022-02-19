@@ -10,7 +10,7 @@ export const getTrendings = () => {
       ? createdDate.getMonth() + 1
       : `0${createdDate.getMonth() + 1}`;
   const date =
-    createdDate.getDate() > 10
+    createdDate.getDate() >= 10
       ? createdDate.getDate()
       : `0${createdDate.getDate()}`;
   const queryDate = `${createdDate.getFullYear()}-${month}-${date}`;

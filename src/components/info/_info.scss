@@ -1,0 +1,74 @@
+.info {
+  display: flex;
+
+  &__avatar {
+    flex: 0 0 110px;
+    display: flex;
+    align-items: center;
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  &__name {
+    margin-bottom: 6px;
+    font-weight: bold;
+    font-size: 24px;
+    line-height: 29px;
+    color: $text;
+  }
+
+  &__fullname {
+    margin-top: 6px;
+    font-size: 14px;
+    line-height: 17px;
+    color: $gray;
+  }
+
+  &__watchers {
+    margin-left: 10px;
+  }
+
+  &__reports,
+  &__watchers {
+    display: flex;
+    align-items: center;
+  }
+
+  &__stats {
+    display: flex;
+  }
+
+  &__text {
+    padding-left: 4px;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 15px;
+    letter-spacing: -0.1px;
+    color: $text-3;
+  }
+
+  &__bold {
+    font-weight: bold;
+    font-size: 14px;
+    line-height: 21px;
+    letter-spacing: -0.3px;
+    color: $text;
+  }
+
+  &__link {
+    color: $primary;
+    transition: 0.3s all;
+
+    &:hover {
+      color: $gray;
+    }
+
+    &:active {
+      opacity: 0.8;
+    }
+  }
+}

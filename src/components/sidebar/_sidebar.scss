@@ -1,0 +1,27 @@
+.sidebar {
+  &__container {
+    display: flex;
+  }
+
+  &__left {
+    width: 379px;
+    height: 100%;
+    padding: 40px 0;
+    position: fixed;
+    border-right: 1px solid #d3d3d3;
+    box-sizing: border-box;
+  }
+
+  &__content {
+    width: 100%;
+    padding-left: 453px;
+  }
+
+  &__title {
+    font-size: 26px;
+    line-height: 28px;
+    font-weight: bold;
+    color: $text;
+    margin-bottom: 30px;
+  }
+}
